@@ -1,12 +1,12 @@
 CC=gcc
 CFLAGS=-I. -O3 -Wall
-DEPS = icmp.h tunnel.h socks5.h
+DEPS = icmp.h tunnel.h
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-icmptunnel: icmptunnel.o icmp.o tunnel.o socks5.o
-	$(CC) -o icmptunnel icmp.o tunnel.o socks5.o icmptunnel.o $(CFLAGS)
+icmptunnel: icmptunnel.o icmp.o tunnel.o
+	$(CC) -o icmptunnel icmp.o tunnel.o icmptunnel.o $(CFLAGS)
 
 test_server: icmp.o test_server.o
 	$(CC) -o test_server icmp.o test_server.o $(CFLAGS)
